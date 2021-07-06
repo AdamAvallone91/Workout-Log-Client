@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import SiteBar from './home/Navbar';
+import React, {useState, useEffect} from 'react';
+import React from 'react';
+import Auth from './auth/Auth';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [sessionToken, setSessionToken] = useState(''); //1
+useEffect(() => { //2
+if (localStorage.getItem('token')){
+setSessionToken(localStorage.getItem('token'));
 }
-
-export default App;
+}, [])
+const updateToken = (newToken) = > { //3
+localStorage.setItem('token', newToken);
+setSessionToken(newToken);
+console.log(sessionToken);
+}
+//render method is down here 
+  return (
+  <div>
+  <Sitebar/>
+  </div>
+  );
+  }
