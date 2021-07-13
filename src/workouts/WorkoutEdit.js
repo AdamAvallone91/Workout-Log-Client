@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 const WorkoutEdit = (props) => {
@@ -10,10 +10,10 @@ const WorkoutEdit = (props) => {
         event.preventDefault();
         fetch(`http://localhost:3000/log/${props.workoutToUpdate.id}`, {
             method: 'PUT',
-            body: JSON.stringify({ log: { description: editDesc, definition: editDef, result: editRes } }),
+            body: JSON.stringify({log: {description: editDesc, definition: editDef, result: editRes}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => {
             props.fetchWorkouts();
@@ -21,18 +21,18 @@ const WorkoutEdit = (props) => {
         })
     };
 
-    return (
+    return(
         <Modal isOpen={true}>
             <ModalHeader>Log a Workout</ModalHeader>
             <ModalBody>
                 <Form onSubmit={workoutUpdate}>
                     <FormGroup>
                         <Label htmlFor='result'>Edit Result:</Label>
-                        <Input name='result' value={editRes} onChange={(e) => setEditRes(e.target.value)} />
+                        <Input name='result' value={editRes} onChange={(e) => setEditRes(e.target.value)}/>
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor='description'>Edit Description:</Label>
-                        <Input name='description' value={editDesc} onChange={(e) => setEditDesc(e.target.value)} />
+                        <Input name='description' value={editDesc} onChange={(e) => setEditDesc(e.target.value)}/>
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor='definition'>Edit Definition:</Label>

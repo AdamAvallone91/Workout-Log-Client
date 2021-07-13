@@ -7,7 +7,7 @@ const WorkoutTable = (props) => {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': `Bearer ${props.token}`
             })
         })
         .then(() => props.fetchWorkouts())

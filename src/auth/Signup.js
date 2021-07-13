@@ -5,11 +5,11 @@ const Signup = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    let handleSubmit = (event) => {
         event.preventDefault();
         fetch('http://localhost:3000/user/register', {
             method: 'POST',
-            body: JSON.stringify({user:{username: username, password: `Bearer ${password}`}}),
+            body: JSON.stringify({user:{username: username, password: password}}),
             headers: new Headers({
                 'Content-Type': 'application/json'
             })

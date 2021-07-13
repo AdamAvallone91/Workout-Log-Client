@@ -14,7 +14,7 @@ const WorkoutIndex = (props) => {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
         .then((logData) => {
@@ -38,7 +38,7 @@ const WorkoutIndex = (props) => {
 
     useEffect(() => {
         fetchWorkouts();
-    })
+    }, []);
 
     return(
         <Container>
